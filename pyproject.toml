@@ -1,0 +1,16 @@
+[project]
+name = "mlx-abliterate"
+version = "0.1.0"
+description = "Refusal-direction ablation (abliteration) for MLX models, no PyTorch required"
+requires-python = ">=3.11"
+dependencies = ["mlx>=0.29", "mlx-lm>=0.32"]
+
+[project.scripts]
+mlx-abliterate = "mlx_abliterate.cli:main"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
