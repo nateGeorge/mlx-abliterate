@@ -58,7 +58,9 @@ def _head(text: str, limit: int = 400) -> str:
 
 def score_refusal(text: str) -> RefusalScore:
     head = _head(text)
-    refusal = next((m for m in REFUSAL_MARKERS if m in head), None)
+    refusal = min(
+        (m for m in REFUSAL_MARKERS if m in head), key=head.index, default=None
+    )
     compliance = any(m in head for m in COMPLIANCE_MARKERS)
     if refusal and compliance:
         # Both present: decide by which appears first.
